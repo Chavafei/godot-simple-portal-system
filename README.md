@@ -60,6 +60,9 @@ First you need to model some portal meshes, or just use a plane or a box.
 9. Set `exit_environment` to assign a specific environment to a portal. This is important if, for instance, you want to prevent environmental effects from being applied twice.
 
 #### Setup for recursive portal
+![recursion](https://github.com/Chavafei/godot-simple-portal-system/blob/main/images/recursion.png)
+
+
 The recursive portal is now possible. by using the `portal_recursive.gd` instead of `portal_recursive.gd`
 
 1. Attach the `portal_recursive.gd` script to two `MeshInstance3D` nodes that represent your portal surfaces.
@@ -70,8 +73,8 @@ The recursive portal is now possible. by using the `portal_recursive.gd` instead
 6. Set the `starting_layer_mask` to a layer mask that you think is not used by any other objects, And also make sure the layer mask after the starting layer mask is also  not used by other object. 
 7. The main camera should have the `cull mask` of the `starting_layer_mask` to be able to see the portal
 
- **Note**: The recursive portal seen will have a slight delay, This is more apparent the more recursive portal there are
- **Note**: How the recursive portal is achieved is by dulplicating a portal with different layer mask and cull mask for camera. the layer mask used will keeps increasing from the `starting_layer_mask` so you should not have main camera have cull mask of layers after the `starting_layer_mask`
+ > **Note**: The recursive portal seen will have a slight delay, This is more apparent the more recursive portal there are
+ > **Note**: How the recursive portal is achieved is by dulplicating a portal with different layer mask and cull mask for camera. the layer mask used will keeps increasing from the `starting_layer_mask` so you should not have main camera have cull mask of layers after the `starting_layer_mask`
 
 ## Advanced Usage
 
