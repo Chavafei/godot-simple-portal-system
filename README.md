@@ -75,7 +75,7 @@ The recursive portal is now possible. by using the `portal_recursive.gd` instead
 
  > **Note**: The recursive portal seen will have a slight delay, This is more apparent the more recursive portal there are
  > **Note**: How the recursive portal is achieved is by dulplicating a portal with different layer mask and cull mask for camera. the layer mask used will keeps increasing from the `starting_layer_mask` so you should not have main camera have cull mask of layers after the `starting_layer_mask`
-
+ > **Note**: The portal recursion will only works on the portal it is paired with.
 ## Advanced Usage
 
 These functions aid in transitioning between the portal entrance and exit frames of reference:
