@@ -59,11 +59,11 @@ First you need to model some portal meshes, or just use a plane or a box.
 8. Adjust the `exit_near_subtract` if objects behind the exit portal get cut off. At 0 the portal exit is roughly cut at Z=0.
 9. Set `exit_environment` to assign a specific environment to a portal. This is important if, for instance, you want to prevent environmental effects from being applied twice.
 
-#### Setup for recursive portal
+### Setup for recursive portal
 ![recursion](https://github.com/Chavafei/godot-simple-portal-system/blob/main/images/recursion.png)
 
 
-The recursive portal is now possible. by using the `portal_recursive.gd` instead of `portal_recursive.gd`
+The recursive portal is now possible. by using the `portal_recursive.gd` instead of `portal.gd`
 
 1. Attach the `portal_recursive.gd` script to two `MeshInstance3D` nodes that represent your portal surfaces.
 2. Make sure this `MeshInstance3D` node have no layer mask.
