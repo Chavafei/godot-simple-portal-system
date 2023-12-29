@@ -11,6 +11,6 @@ config_version=5
 [application]
 
 config/name="Godot Simple Portal System"
-run/main_scene="res://scenes/demo.tscn"
+run/main_scene="res://scenes/demo_recursion.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"

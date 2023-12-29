@@ -59,6 +59,20 @@ First you need to model some portal meshes, or just use a plane or a box.
 8. Adjust the `exit_near_subtract` if objects behind the exit portal get cut off. At 0 the portal exit is roughly cut at Z=0.
 9. Set `exit_environment` to assign a specific environment to a portal. This is important if, for instance, you want to prevent environmental effects from being applied twice.
 
+#### Setup for recursive portal
+The recursive portal is now possible. by using the `portal_recursive.gd` instead of `portal_recursive.gd`
+
+1. Attach the `portal_recursive.gd` script to two `MeshInstance3D` nodes that represent your portal surfaces.
+2. Make sure this `MeshInstance3D` node have no layer mask.
+3. Do the same the same as `portal.gd` except some the following additions
+4. Set the `max_recursion` to the amount of recursion you wanted the portal to see
+5. Set the `visible_layer_masks` to the same cull mask of your main camera
+6. Set the `starting_layer_mask` to a layer mask that you think is not used by any other objects, And also make sure the layer mask after the starting layer mask is also  not used by other object. 
+7. The main camera should have the `cull mask` of the `starting_layer_mask` to be able to see the portal
+
+ **Note**: The recursive portal seen will have a slight delay, This is more apparent the more recursive portal there are
+ **Note**: How the recursive portal is achieved is by dulplicating a portal with different layer mask and cull mask for camera. the layer mask used will keeps increasing from the `starting_layer_mask` so you should not have main camera have cull mask of layers after the `starting_layer_mask`
+
 ## Advanced Usage
 
 These functions aid in transitioning between the portal entrance and exit frames of reference:
@@ -75,7 +89,6 @@ clone_spotlight.global_transform = portal.real_to_exit_transform(real_spotlight.
 
 This code can also be used to teleport an object to the exit portal. Alternatively use `real_to_exit_position` if you only want to change the global position of your object.
 
-> **Note**: Portals currently do not nest (ie, you can't see through two portals at once). To nest portals you'd have to update the exit_camera position in-between draw calls, or figure out a way to change the camera view matrix in-between rendering viewports. That is beyond the scope of this simple system, but if you got some nice ideas how to implement these things in godot, please [open an issue](https://github.com/Donitzo/godot-simple-portal-system/issues).
 
 ### Crossing a Portal
 

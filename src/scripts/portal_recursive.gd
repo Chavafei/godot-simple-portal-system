@@ -31,8 +31,7 @@ func _create_viewport() -> void:
 	set_layer_mask_value(current_recursion + starting_layer_mask + 1, true)
 	set_layer_mask_value(current_recursion + starting_layer_mask - 1, false)
 	
-	print("exit " + exit_portal.name)
-	if current_recursion <= max_recursion :
+	if current_recursion < max_recursion :
 		var next_recursion_portal = self.duplicate()
 		var instance = next_recursion_portal
 		
@@ -54,12 +53,11 @@ func _create_viewport() -> void:
 	
 
 func _process(delta:float) -> void:
-	
-	
 	# Disable the viewport if the portal is further away than disable_viewport_distance or if the portal is invisible in the scene tree
 	var disable_viewport:bool = not is_visible_in_tree() or\
 		main_camera.global_position.distance_squared_to(global_position) > disable_viewport_distance * disable_viewport_distance
-
+		
+	
 	# Enable or disable 3D rendering for the viewport (if it exists)
 	if _viewport != null:
 		_viewport.disable_3d = disable_viewport
